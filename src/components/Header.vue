@@ -1,8 +1,6 @@
 <template>
   <header>
-    <div class="header">
-        Ну хедер и хедер
-    </div>
+    <div class="header">Ну хедер и хедер</div>
   </header>
 </template>
 
@@ -28,13 +26,13 @@ export default {
     //   return false;
     // },
   },
-};
+}
 </script>
 
 <style lang="scss">
 header {
-    width: 100%;
-    height: 70px;
-    background-color: gray;
+  width: 100%;
+  height: 70px;
+  background-color: gray;
 }
 </style>
