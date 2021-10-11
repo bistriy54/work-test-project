@@ -1,5 +1,5 @@
 <template>
-  <div class="main-filter">Фильтр</div>
+  <div class="char-item"></div>
 </template>
 
 <script>

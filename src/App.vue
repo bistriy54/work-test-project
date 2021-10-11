@@ -1,5 +1,5 @@
 <template>
-   <div id="app">
+  <div id="app">
     <Header />
     <Main />
     <Footer />
@@ -16,21 +16,27 @@ export default {
   components: {
     Header,
     Main,
-    Footer
+    Footer,
   },
   created() {
     // auth
-    this.getCharacters();
+    this.getCharacters()
   },
   methods: {
     getCharacters() {
-      this.axios.get('https://rickandmortyapi.com/api/character').then(res => console.log(res));
-    }
-  }
+      this.$store.dispatch('getApiCharacters')
+    },
+  },
 }
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

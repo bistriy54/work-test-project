@@ -1,7 +1,7 @@
 <template>
   <div class="main-page wrapper">
-      <MainFilter />  
-      <MainCharacterList />
+    <MainFilter />
+    <MainCharacterList />
   </div>
 </template>
 
@@ -9,9 +9,9 @@
 import MainFilter from '../main/MainFilter.vue'
 import MainCharacterList from '../main/MainCharacterList.vue'
 export default {
-    components: {
-        MainFilter,
-        MainCharacterList
-    }
+  components: {
+    MainFilter,
+    MainCharacterList,
+  },
 }
 </script>
