@@ -1,9 +1,5 @@
 module.exports = {
-  extends: [
-    'plugin:vue/recommended',
-    'plugin:prettier-vue/recommended',
-    'prettier',
-  ],
+  extends: ['plugin:vue/recommended', 'plugin:prettier-vue/recommended', 'prettier'],
 
   settings: {
     'prettier-vue': {
@@ -83,4 +79,4 @@ module.exports = {
       },
     ],
   },
-};
+}

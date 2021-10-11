@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '../components/pages/MainPage.vue'
 import CharacterPage from '../components/pages/CharacterPage.vue'
+import EpisodePage from '../components/pages/EpisodePage.vue'
+import Page404 from '../components/pages/Page404.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,9 +13,14 @@ const routes = [
     component: MainPage,
   },
   {
-    path: '/character/:id',
+    path: '/character/:id?',
     name: 'character',
     component: CharacterPage,
+  },
+  {
+    path: '/episode/:id?',
+    name: 'episode',
+    component: EpisodePage,
   },
   {
     path: '*',

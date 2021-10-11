@@ -36,6 +36,15 @@ export default {
 }
 body {
   margin: 0;
+  background-image: url('./assets/rmfon1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  /* overflow: hidden; */
+}
+a {
+  text-decoration: none;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -43,5 +52,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  /* overflow: hidden; */
+}
+/* .main-wrapper {
+  height: 100vh;
+} */
+.container {
+  max-width: 1280px;
+  margin: auto;
 }
 </style>

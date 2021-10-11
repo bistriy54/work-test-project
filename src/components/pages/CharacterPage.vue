@@ -1,9 +1,9 @@
 <template>
   <div class="main-page wrapper">
-    <div v-if="charId">
-      <CharacterItem :id="charId" />
+    <div v-if="charId && !pending">
+      <CharacterItem :item="charItem" />
     </div>
-    <div v-else>
+    <div v-if="charId === undefined">
       <div>
         <span>Упс... нет id персонажа!</span>
       </div>
@@ -17,12 +17,27 @@ export default {
   components: {
     CharacterItem,
   },
-  //   mounted() {
-  //     console.log(this.$route.params.id)
-  //   },
+  data() {
+    return {
+      charItem: {},
+      pending: true,
+    }
+  },
   computed: {
     charId() {
       return this.$route.params.id
+    },
+  },
+  mounted() {
+    if (this.$route.params.id) {
+      this.getCharInfo()
+    }
+  },
+  methods: {
+    async getCharInfo() {
+      const getCharRes = await this.$store.dispatch('getOneCharacter', this.$route.params.id)
+      this.charItem = getCharRes
+      this.pending = false
     },
   },
 }
