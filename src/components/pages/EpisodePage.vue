@@ -1,11 +1,11 @@
 <template>
   <div class="main-page wrapper">
-    <div v-if="charId && !pending">
-      <EpisodeItem :item="charItem" />
+    <div v-if="episodeId && !pending">
+      <EpisodeItem :item="episodeItem" />
     </div>
-    <div v-if="charId === undefined">
+    <div v-if="episodeId === undefined">
       <div>
-        <span>Упс... нет эпизода!</span>
+        <span>Упс... нет id эпизода!</span>
       </div>
     </div>
   </div>
@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      charItem: {},
+      episodeItem: {},
       pending: true,
     }
   },
   computed: {
-    charId() {
+    episodeId() {
       return this.$route.params.id
     },
   },
@@ -35,8 +35,8 @@ export default {
   },
   methods: {
     async getCharInfo() {
-      const getCharRes = await this.$store.dispatch('getOneCharacter', this.$route.params.id)
-      this.charItem = getCharRes
+      const getEpisodeRes = await this.$store.dispatch('getEpisodeInfo', this.$route.params.id)
+      this.episodeItem = getEpisodeRes
       this.pending = false
     },
   },
