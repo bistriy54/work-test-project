@@ -4,6 +4,9 @@
 git clone git@github.com:bistriy54/work-test-project.git
 ```
 ```
+cd work-test-project/
+```
+```
 npm i
 ```
 ```
