@@ -65,7 +65,10 @@ a {
 } */
 .container {
   max-width: 1280px;
-  margin: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-bottom: auto;
   width: 100%;
 }
 </style>

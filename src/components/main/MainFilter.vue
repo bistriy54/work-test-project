@@ -1,7 +1,7 @@
 <template>
   <div class="main-filter filter">
     <div class="filter__main">
-      <div class="filter__input">
+      <div class="filter__main-block filter__input">
         <img src="../../assets/search.png" alt="" @click="goSearch" />
         <input
           v-model="inputVal"
@@ -11,7 +11,7 @@
           @input="onChange"
         />
       </div>
-      <div class="filter__status status">
+      <div class="filter__main-block filter__status status">
         <div class="status__title">
           <span>Статус:</span>
         </div>
@@ -21,7 +21,7 @@
           <div class="status__item" @click="status('unknown')">unknown</div>
         </div>
       </div>
-      <div class="filter__button">
+      <div class="filter__main-block filter__button">
         <div class="button" @click="deleteFilter">Сбросить</div>
       </div>
     </div>
@@ -127,7 +127,14 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin: 10px;
-    width: 100%;
+    @media (max-width: 1023px) {
+      flex-direction: column;
+    }
+    &-block {
+      @media (max-width: 1023px) {
+        margin-bottom: 10px;
+      }
+    }
   }
   &__input {
     position: relative;
@@ -162,7 +169,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 150px;
+        // width: 150px;
       }
       &__item {
         font-weight: bold;

@@ -5,7 +5,7 @@
     </div>
     <div v-if="episodeId === undefined">
       <div>
-        <span>Упс... нет id эпизода!</span>
+        <h1>Упс... нет id эпизода!</h1>
       </div>
     </div>
   </div>

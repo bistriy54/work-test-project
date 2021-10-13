@@ -5,7 +5,7 @@
     </div>
     <div v-if="charId === undefined">
       <div>
-        <span>Упс... нет id персонажа!</span>
+        <h1>Упс... нет id персонажа!</h1>
       </div>
     </div>
   </div>

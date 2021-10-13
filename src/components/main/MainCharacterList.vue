@@ -1,20 +1,20 @@
 <template>
   <div ref="mainWrap" class="main-character-list chars-list">
-    <div v-if="characterList.length" class="chars-list__wrapper">
+    <div v-if="characterList.length && !pending" class="chars-list__wrapper">
       <MainCharacterItem v-for="item in characterList" :key="item.id" :item="item" />
     </div>
-    <div v-else>
-      <span>Элементы не найдены</span>
-    </div>
+    <Preloader v-if="pending" />
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 import MainCharacterItem from './MainCharacterItem.vue'
+import Preloader from '../generic/Preloader.vue'
 export default {
   components: {
     MainCharacterItem,
+    Preloader,
   },
   data: () => {
     return {
@@ -22,6 +22,9 @@ export default {
     }
   },
   computed: {
+    ...mapState({
+      pending: (state) => state.characters.pending, // pending
+    }),
     ...mapGetters(['getAllCharacters', 'getFiltredCharacters', 'getFiltredStatus']),
     characterList() {
       if (this.getFiltredStatus === true) {
@@ -36,6 +39,7 @@ export default {
   methods: {
     async loadNextChars() {
       if (
+        this.$refs.mainWrap &&
         window.pageYOffset >= this.$refs.mainWrap.clientHeight - 600 &&
         this.pendingNextChars === false &&
         this.getFiltredStatus === false
