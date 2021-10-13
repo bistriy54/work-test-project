@@ -66,5 +66,6 @@ a {
 .container {
   max-width: 1280px;
   margin: auto;
+  width: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div ref="mainWrap" class="main-character-list chars-list" @scroll="loadNextChars">
-    <div v-if="getAllCharacters.length" class="chars-list__wrapper">
-      <MainCharacterItem v-for="item in getAllCharacters" :key="item.id" :item="item" />
+  <div ref="mainWrap" class="main-character-list chars-list">
+    <div v-if="characterList.length" class="chars-list__wrapper">
+      <MainCharacterItem v-for="item in characterList" :key="item.id" :item="item" />
     </div>
     <div v-else>
       <span>Элементы не найдены</span>
@@ -22,7 +22,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getAllCharacters']),
+    ...mapGetters(['getAllCharacters', 'getFiltredCharacters', 'getFiltredStatus']),
+    characterList() {
+      if (this.getFiltredStatus === true) {
+        return this.getFiltredCharacters
+      }
+      return this.getAllCharacters
+    },
   },
   mounted() {
     window.addEventListener('scroll', this.loadNextChars) // привязываем событие прокрутки страницы
@@ -30,8 +36,9 @@ export default {
   methods: {
     async loadNextChars() {
       if (
-        window.pageYOffset >= this.$refs.mainWrap.clientHeight - 300 &&
-        this.pendingNextChars === false
+        window.pageYOffset >= this.$refs.mainWrap.clientHeight - 600 &&
+        this.pendingNextChars === false &&
+        this.getFiltredStatus === false
       ) {
         this.pendingNextChars = true
         const res = await this.$store.dispatch('getNextCharacters')

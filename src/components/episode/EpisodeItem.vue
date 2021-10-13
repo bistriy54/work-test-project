@@ -80,8 +80,7 @@ export default {
   overflow: hidden;
   background-color: #5aab9cd6;
   max-width: 720px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto 20px auto;
   &__date {
     width: 100%;
     text-align: right;
