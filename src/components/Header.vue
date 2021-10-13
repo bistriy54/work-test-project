@@ -1,6 +1,13 @@
 <template>
   <header>
-    <div class="header">Ну хедер и хедер</div>
+    <div class="header container">
+      <div class="header__logo">
+        <router-link :to="{ name: 'main' }">
+          <img src="../assets/logo.png" alt="" />
+        </router-link>
+      </div>
+      Ну хедер и хедер
+    </div>
   </header>
 </template>
 
@@ -32,7 +39,12 @@ export default {
 <style lang="scss">
 header {
   width: 100%;
-  height: 70px;
-  background-color: gray;
+  height: 80px;
+  background-color: #5aab9c71;
+  .header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 </style>

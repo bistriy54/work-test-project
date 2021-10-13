@@ -41,6 +41,18 @@ const actions = {
     console.log(getChars)
     return getChars
   },
+  getOneCharacter: async (context, data) => {
+    // context.commit('togglePending', true)
+    const getOneChar = await axios.get(`${apiConfig.url}/character/${data}`).then((res) => res.data)
+    console.log(getOneChar)
+    return getOneChar
+    // if (getOneChar && getChars.getOneChar) {
+    //   context.commit('saveCharacters', getChars.results)
+    // }
+    // context.commit('togglePending', false)
+    // console.log(getChars)
+    // return getChars
+  },
 }
 
 export default {
