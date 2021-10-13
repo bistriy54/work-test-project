@@ -18,9 +18,21 @@ export default {
     Main,
     Footer,
   },
-  created() {
-    // auth
-    this.getCharacters()
+  mounted() {
+    if (window.localStorage['my-app']) {
+      let vuexObj = JSON.parse(window.localStorage['my-app'])
+      if (
+        vuexObj.characters &&
+        vuexObj.characters.characters &&
+        vuexObj.characters.characters.length
+      ) {
+        this.$store.dispatch('saveCharacters', vuexObj.characters.characters)
+      } else {
+        this.getCharacters()
+      }
+    } else {
+      this.getCharacters()
+    }
   },
   methods: {
     getCharacters() {

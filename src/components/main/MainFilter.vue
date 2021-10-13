@@ -16,9 +16,27 @@
           <span>Статус:</span>
         </div>
         <div class="status__list">
-          <div class="status__item" @click="status('Alive')">alive</div>
-          <div class="status__item" @click="status('Dead')">dead</div>
-          <div class="status__item" @click="status('unknown')">unknown</div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'Alive' }"
+            @click="status('Alive')"
+          >
+            alive
+          </div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'Dead' }"
+            @click="status('Dead')"
+          >
+            dead
+          </div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'unknown' }"
+            @click="status('unknown')"
+          >
+            unknown
+          </div>
         </div>
       </div>
       <div class="filter__main-block filter__button">
@@ -44,6 +62,11 @@ export default {
       statusFilter: (state) => state.characters.statusFilter, // id города, выбранного пользователем
     }),
     ...mapGetters(['getAllCharacters', 'getFiltredCharacters', 'getFiltredStatus']),
+  },
+  mounted() {
+    if (this.nameFilter !== '') {
+      this.inputVal = this.nameFilter
+    }
   },
   methods: {
     goSearch() {
@@ -164,6 +187,7 @@ export default {
     .status {
       &__title {
         margin-right: 10px;
+        font-weight: bold;
       }
       &__list {
         display: flex;
@@ -182,6 +206,10 @@ export default {
         &:hover {
           background-color: #28957f;
         }
+      }
+      &-active {
+        border: 1px solid #1c6b5b;
+        background-color: #28957f;
       }
     }
   }
