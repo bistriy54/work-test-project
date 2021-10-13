@@ -1,7 +1,7 @@
 <template>
   <div class="main-filter filter">
     <div class="filter__main">
-      <div class="filter__input">
+      <div class="filter__main-block filter__input">
         <img src="../../assets/search.png" alt="" @click="goSearch" />
         <input
           v-model="inputVal"
@@ -11,17 +11,35 @@
           @input="onChange"
         />
       </div>
-      <div class="filter__status status">
+      <div class="filter__main-block filter__status status">
         <div class="status__title">
           <span>Статус:</span>
         </div>
         <div class="status__list">
-          <div class="status__item" @click="status('Alive')">alive</div>
-          <div class="status__item" @click="status('Dead')">dead</div>
-          <div class="status__item" @click="status('unknown')">unknown</div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'Alive' }"
+            @click="status('Alive')"
+          >
+            alive
+          </div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'Dead' }"
+            @click="status('Dead')"
+          >
+            dead
+          </div>
+          <div
+            class="status__item"
+            :class="{ 'status-active': statusFilter === 'unknown' }"
+            @click="status('unknown')"
+          >
+            unknown
+          </div>
         </div>
       </div>
-      <div class="filter__button">
+      <div class="filter__main-block filter__button">
         <div class="button" @click="deleteFilter">Сбросить</div>
       </div>
     </div>
@@ -44,6 +62,11 @@ export default {
       statusFilter: (state) => state.characters.statusFilter, // id города, выбранного пользователем
     }),
     ...mapGetters(['getAllCharacters', 'getFiltredCharacters', 'getFiltredStatus']),
+  },
+  mounted() {
+    if (this.nameFilter !== '') {
+      this.inputVal = this.nameFilter
+    }
   },
   methods: {
     goSearch() {
@@ -127,7 +150,14 @@ export default {
     justify-content: space-between;
     align-items: center;
     margin: 10px;
-    width: 100%;
+    @media (max-width: 1023px) {
+      flex-direction: column;
+    }
+    &-block {
+      @media (max-width: 1023px) {
+        margin-bottom: 10px;
+      }
+    }
   }
   &__input {
     position: relative;
@@ -157,12 +187,13 @@ export default {
     .status {
       &__title {
         margin-right: 10px;
+        font-weight: bold;
       }
       &__list {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 150px;
+        // width: 150px;
       }
       &__item {
         font-weight: bold;
@@ -175,6 +206,10 @@ export default {
         &:hover {
           background-color: #28957f;
         }
+      }
+      &-active {
+        border: 1px solid #1c6b5b;
+        background-color: #28957f;
       }
     }
   }

@@ -40,6 +40,18 @@ export default {
   background-color: #5aab9cd6;
   margin-top: 20px;
   margin-bottom: 20px;
+  &__img {
+    @media (max-width: 1024px) {
+      width: 250px;
+    }
+    @media (max-width: 500px) {
+      width: 150px;
+    }
+    & img {
+      width: 100%;
+      height: auto;
+    }
+  }
   &__info {
     display: flex;
     justify-content: center;
@@ -48,6 +60,9 @@ export default {
     padding: 10px;
     & div {
       margin-bottom: 5px;
+      @media (max-width: 767px) {
+        text-align: left;
+      }
     }
   }
   &__option {

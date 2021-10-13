@@ -45,8 +45,11 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    &__logo {
+      width: 100%;
+    }
     & a {
-      display: flex;
+      display: block;
       color: #2c3e50;
     }
   }
