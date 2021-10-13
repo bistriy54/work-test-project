@@ -108,6 +108,13 @@ export default {
       }
       &-item {
         margin-right: 7px;
+        & a {
+          font-weight: bold;
+          background-color: #439241;
+          padding: 4px 8px;
+          border-radius: 7px;
+          color: white;
+        }
       }
     }
   }

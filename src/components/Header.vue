@@ -4,9 +4,9 @@
       <div class="header__logo">
         <router-link :to="{ name: 'main' }">
           <img src="../assets/logo.png" alt="" />
+          <!-- <h1>На главную</h1> -->
         </router-link>
       </div>
-      Ну хедер и хедер
     </div>
   </header>
 </template>
@@ -45,6 +45,13 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    &__logo {
+      width: 100%;
+    }
+    & a {
+      display: block;
+      color: #2c3e50;
+    }
   }
 }
 </style>
