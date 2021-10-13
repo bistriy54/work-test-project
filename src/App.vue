@@ -1,28 +1,70 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Main msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <Main />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import Main from './components/Main.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    Main
-  }
+    Header,
+    Main,
+    Footer,
+  },
+  created() {
+    // auth
+    this.getCharacters()
+  },
+  methods: {
+    getCharacters() {
+      this.$store.dispatch('getApiCharacters')
+    },
+  },
 }
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-image: url('./assets/rmfon1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  /* overflow: hidden; */
+}
+a {
+  text-decoration: none;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  /* overflow: hidden; */
+}
+/* .main-wrapper {
+  height: 100vh;
+} */
+.container {
+  max-width: 1280px;
+  margin: auto;
 }
 </style>
