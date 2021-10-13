@@ -43,6 +43,8 @@ export default {
   border-radius: 7px;
   overflow: hidden;
   background-color: #5aab9cd6;
+  margin-top: 20px;
+  margin-bottom: 20px;
   &__info {
     display: flex;
     justify-content: center;

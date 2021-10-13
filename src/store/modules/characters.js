@@ -42,16 +42,21 @@ const actions = {
     return getChars
   },
   getOneCharacter: async (context, data) => {
-    // context.commit('togglePending', true)
     const getOneChar = await axios.get(`${apiConfig.url}/character/${data}`).then((res) => res.data)
     console.log(getOneChar)
     return getOneChar
-    // if (getOneChar && getChars.getOneChar) {
-    //   context.commit('saveCharacters', getChars.results)
-    // }
-    // context.commit('togglePending', false)
-    // console.log(getChars)
-    // return getChars
+  },
+  getManyCharacters: async (context, data) => {
+    const getManyChars = await axios
+      .get(`${apiConfig.url}/character/${data}`)
+      .then((res) => res.data)
+    console.log('getManyChars', getManyChars)
+    return getManyChars
+  },
+  getEpisodeInfo: async (context, data) => {
+    const getEpisode = await axios.get(`${apiConfig.url}/episode/${data}`).then((res) => res.data)
+    console.log(getEpisode)
+    return getEpisode
   },
 }
 

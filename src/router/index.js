@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '*',
-    component: () => Main,
+    component: Page404,
   },
 ]
 
