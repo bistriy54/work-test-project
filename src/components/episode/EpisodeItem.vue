@@ -81,6 +81,7 @@ export default {
   background-color: #5aab9cd6;
   max-width: 720px;
   margin-top: 20px;
+  margin-bottom: 20px;
   &__date {
     width: 100%;
     text-align: right;

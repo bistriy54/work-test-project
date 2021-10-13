@@ -28,11 +28,6 @@ export default {
       default: () => {},
     },
   },
-  // computed: {
-  //   location() {
-  //     return this.
-  //   },
-  // },
 }
 </script>
 

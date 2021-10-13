@@ -1,5 +1,5 @@
 <template>
-  <div class="main-character-list chars-list">
+  <div ref="mainWrap" class="main-character-list chars-list" @scroll="loadNextChars">
     <div v-if="getAllCharacters.length" class="chars-list__wrapper">
       <MainCharacterItem v-for="item in getAllCharacters" :key="item.id" :item="item" />
     </div>
@@ -16,8 +16,28 @@ export default {
   components: {
     MainCharacterItem,
   },
+  data: () => {
+    return {
+      pendingNextChars: false,
+    }
+  },
   computed: {
     ...mapGetters(['getAllCharacters']),
+  },
+  mounted() {
+    window.addEventListener('scroll', this.loadNextChars) // привязываем событие прокрутки страницы
+  },
+  methods: {
+    async loadNextChars() {
+      if (
+        window.pageYOffset >= this.$refs.mainWrap.clientHeight - 300 &&
+        this.pendingNextChars === false
+      ) {
+        this.pendingNextChars = true
+        const res = await this.$store.dispatch('getNextCharacters')
+        this.pendingNextChars = false
+      }
+    },
   },
 }
 </script>

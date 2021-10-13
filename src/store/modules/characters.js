@@ -22,6 +22,9 @@ const mutations = {
   togglePending: (state, bool) => {
     state.pending = bool
   },
+  addCharacters: (state, data) => {
+    state.characters = state.characters.concat(data)
+  },
 }
 
 const actions = {
@@ -52,6 +55,16 @@ const actions = {
       .then((res) => res.data)
     console.log('getManyChars', getManyChars)
     return getManyChars
+  },
+  getNextCharacters: async (context, data) => {
+    const getChars = await axios.get(`${context.state.info.next}`).then((res) => res.data)
+    if (getChars && getChars.results) {
+      context.commit('addCharacters', getChars.results)
+    }
+    if (getChars && getChars.info) {
+      context.commit('saveCharsApiInfo', getChars.info)
+    }
+    return getChars
   },
   getEpisodeInfo: async (context, data) => {
     const getEpisode = await axios.get(`${apiConfig.url}/episode/${data}`).then((res) => res.data)
