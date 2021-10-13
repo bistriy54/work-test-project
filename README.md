@@ -1,9 +1,14 @@
 # work-project
 Запуск проекта:
+```
 git clone git@github.com:bistriy54/work-test-project.git
+```
 npm i
+```
 npm run lint
+```
 npm run start
+```
 
 ## Project setup
 ```
